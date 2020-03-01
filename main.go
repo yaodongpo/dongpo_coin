@@ -20,10 +20,17 @@ func ComputeHash(data string) string {
 	return GetSHA256HashCode([]byte(data))
 }
 
+//链，区块的单链
+type Chain []Block
+
+//生成区块链的时候初始化创世区块
+func NewChain() *Chain {
+	block0 := NewBlock("I am the fuck 创世区块", "")
+	return &Chain{*block0}
+}
+
 //测试main函数
 func main() {
-	block0 := NewBlock("test Newblock", "")
-	block1 := NewBlock("test block1", "683e34a61c3867bc4657a00079de786df6aa6521d7433ebbdaf34635437a20f6")
-	fmt.Println("block0:", block0)
-	fmt.Println("block1:", block1)
+	chain := NewChain()
+	fmt.Println("chain:", chain)
 }
